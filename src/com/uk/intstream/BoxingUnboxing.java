@@ -1,11 +1,13 @@
-package com.uk.stream;
+package com.uk.intstream;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.ToIntFunction;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-public class ReduceFunction {
+public class BoxingUnboxing {
 
     static void main(String[] args) {
         Stream<Integer> integerStreamOne = Stream.of(0, 1, 1, 2, 3, 5, 8, 13, 21, 34);
@@ -23,7 +25,7 @@ public class ReduceFunction {
         Integer sum = integerStreamTwo.reduce(Integer::sum).orElse(0);
         System.out.println(sum);
 
-//        Convert Stream<Integer> to IntStream
+//      Q. Convert Stream<Integer> to IntStream
         Stream<Integer> integerStreamThree = Stream.of(0, 1, 1, 2, 3, 5, 8, 13, 21, 34);
 //        mapToInt returns an IntStream
         IntStream intStream = integerStreamThree.mapToInt(new ToIntFunction<Integer>() {
@@ -35,5 +37,11 @@ public class ReduceFunction {
 //        IntStream intStream = integerStreamThree.mapToInt(value -> value);
 //        IntStream intStream = integerStreamThree.mapToInt(Integer::intValue);
         System.out.println(intStream.sum());
+
+//      Q. Convert IntStream to Stream<Integer>
+        IntStream intStreamOne = IntStream.of(2, 3, 5, 7, 11, 13, 17, 19);
+//        boxed() returns a stream consisting of elements of this stream, each boxed to Integer
+        List<Integer> integerList = intStreamOne.boxed().toList();
+        System.out.println(integerList);
     }
 }

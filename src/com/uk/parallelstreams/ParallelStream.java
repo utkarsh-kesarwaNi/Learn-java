@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ParallelStream {
-    public static void main() {
+    static void main() {
 
         System.out.println(Runtime.getRuntime().availableProcessors());
 
