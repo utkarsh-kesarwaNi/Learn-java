@@ -1,6 +1,6 @@
-package com.uk.stream;
+package com.uk.stream.stream;
 
-import com.uk.datasource.Student;
+import com.uk.stream.datasource.Student;
 
 import java.util.Arrays;
 import java.util.List;

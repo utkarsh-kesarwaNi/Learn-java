@@ -1,4 +1,4 @@
-package com.uk.methodreference;
+package com.uk.stream.methodreference;
 
 import java.util.Arrays;
 import java.util.Collections;

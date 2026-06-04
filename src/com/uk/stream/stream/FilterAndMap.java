@@ -1,4 +1,4 @@
-package com.uk.stream;
+package com.uk.stream.stream;
 
 import java.util.Arrays;
 import java.util.stream.Stream;

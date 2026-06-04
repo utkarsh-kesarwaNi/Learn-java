@@ -1,4 +1,4 @@
-package com.uk.intstream;
+package com.uk.stream.intstream;
 
 import java.util.stream.IntStream;
 import java.util.stream.Stream;

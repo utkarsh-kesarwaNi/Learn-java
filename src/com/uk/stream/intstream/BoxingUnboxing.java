@@ -1,4 +1,4 @@
-package com.uk.intstream;
+package com.uk.stream.intstream;
 
 import java.util.Arrays;
 import java.util.List;
