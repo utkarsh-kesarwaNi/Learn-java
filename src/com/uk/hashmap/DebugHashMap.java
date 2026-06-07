@@ -7,29 +7,35 @@ public class DebugHashMap {
     static void main(String[] args) {
         Map<String, Integer> map = new HashMap<>();
         /*
-        What happens behind when map is declared and instantiated ?
-        It will create an array of buckets(hash table) with default initial capacity of 16
-        The default load factor is 0.75 which means, when 75% of capacity is occupied, then the capacity gets doubled
-        With 12 elements, the capacity is 12 but with 13 elements the capacity becomes 32
-
-        Also both get and put provide constant time performance
-        * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
-        * | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 |
-        * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
-        Each bucket here is a node/LinkedList
-        */
+         * What happens behind the scenes when map is declared and instantiated?
+         * It prepares an array of buckets (hash table) with a default initial capacity of 16.
+         * The default load factor is 0.75, meaning when 75% of capacity is occupied, it resizes.
+         * With 12 elements, capacity is 16; adding a 13th element doubles the capacity to 32.
+         *
+         * During a resize, elements don't have their indices completely recalculated.
+         * Because the size doubles (powers of 2), a mathematical trick ensures an element at
+         * index 'j' will either stay at index 'j' or move to 'j + oldCapacity' in the new array.
+         *
+         * Both get and put provide constant-time O(1) performance ideally.
+         * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+         * | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 |
+         * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+         * Each bucket initially points to a Node (Linked List).
+         */
 
         map.put("First prime number", 2);
         /*
-         * Whenever we start adding elements to hashmap, it will perform following operations
-         * 1. Calculate hashcode of key, so here it will be hash("First prime number") which is 683617178.
-         *    Hashcode will help us to store the key at a specific index in that array of node
-         *    It will also help us in retrieval.
-         * 2. What index ?
-         *    index = hash(key) & (n-1)
-         *    index = 683617178 & (16-1) = 10
-         * So our key and value will be stored in a node with index 10
-         * 3. Each node is a Linked List, and this node contains 4 things
+         * Whenever we start adding elements, it performs the following operations:
+         * 1. Calculate the hash using Java 8's bit-shifting spread function:
+         * int h = key.hashCode();
+         * int hash = h ^ (h >>> 16);
+         * (This XORs the higher 16 bits with the lower 16 bits to prevent collisions
+         * when capacity is small). Let's assume final hash = 683617178.
+         * 2. What index?
+         * index = hash(key) & (n-1)
+         * index = 683617178 & (16-1) = 10
+         * So our key and value will be stored in a node at index 10.
+         * * 3. Each node is a Linked List, containing 4 things:
          * +-----------------------------+
          * |          Node<K, V>         |
          * +-----------------------------+
@@ -42,57 +48,64 @@ public class DebugHashMap {
 
         map.put("Second prime number", 3);
         /*
-         * Works the same way as above
-         * hash("Second prime number") = 1020314646
+         * Works the same way as above.
+         * Assume hash("Second prime number") = 1020314646
          * index = hash(key) & (n-1) = 1020314646 & 15 = 6
-         * So this will be stored in a node with index 6.
-         * +-----------------------------+
-         * |          Node<K, V>         |
-         * +-----------------------------+
-         * | int hash : 683617178        |
-         * | K key : "First prime number"|
-         * | V value : 2                 |
-         * | Node next : null            |
-         * +-----------------------------+
+         * Stored in a node at index 6:
+         * +------------------------------+
+         * |          Node<K, V>          |
+         * +------------------------------+
+         * | int hash : 1020314646        |
+         * | K key : "Second prime number"|
+         * | V value : 3                  |
+         * | Node next : null             |
+         * +------------------------------+
          *
-         * What if hashcode is same for 2 keys and then the index value is same also?
-         * Then at the same index we will have another linked list/node created, where the next pointer of first node
-         * will have address of second node
-         *
-         * hash("Second prime number") and hash("TFcond prime number") are same
+         * What if the index is the same for two keys? (A Collision)
+         * A Linked List is formed. The first node's 'next' pointer links to the new node.
+         * * [Java 8+, Treeification]:
+         * If a single bucket's Linked List grows to 8 nodes (TREEIFY_THRESHOLD) and the
+         * overall map capacity is at least 64, HashMap transforms this long Linked List
+         * into a Red-Black Tree. This upgrades worst-case search time from O(n) to O(log n).
          */
+
         map.put("TFcond prime number", 3);
 
         /*
-         * HashMap can have null keys, where it will be saved in this case ?
-         * It will be stored in a bucket/node with index 0.
+         * Null keys:
+         * HashMap allows one null key. The internal hash function explicitly returns 0
+         * if the key is null, meaning it will ALWAYS be stored in bucket index 0.
          */
         map.put(null, 2);
 
         /*
-         * What happens when we try to add same key to the map ?
+         * What happens when we try to add the EXACT same key to the map?
          * key = "abc", value = 1
          * key = "abc", value = 2
          *
-         * In the same node, the value is overwritten to the latest
+         * The map doesn't just blindly trust the hashcode. It checks three things:
+         * 1. Hash check (Do they have the same hash integer?)
+         * 2. Memory check (Are they the exact same object in memory? `==`)
+         * 3. Value check (Do they have the exact same logical value? `.equals()`)
+         * * if (existing.hash == new.hash && (existing.key == new.key || existing.key.equals(new.key)))
          *
-         * map will only have key = "abc" and value = 2
+         * If this evaluates to true, the value in the node is overwritten.
+         * The map will only have key = "abc" and value = 2.
          */
 
         Integer firstPrimeNumber = map.get("First prime number");
         Integer secondPrimeNumber = map.get("Second prime number");
         Integer tfcondPrimeNumber = map.get("TFcond prime number");
-        System.out.println(firstPrimeNumber + "\t" + secondPrimeNumber+ "\t" + tfcondPrimeNumber);
-        /*
-         * Whenever we start adding elements to hashmap, it will perform following operations
-         * 1. Calculate hashcode of key, so here it will be hash("First prime number") which is 683617178.
-         *    Hashcode will help us to store the key at a specific index in that array of node
-         *    It will also help us in retrieval.
-         * 2. What index ?
-         *    index = hash(key) & (n-1)
-         *    index = 683617178 & (16-1) = 10
-         * So our key and value will be fetched from a node with index 10
-         */
+        System.out.println(firstPrimeNumber + "\t" + secondPrimeNumber + "\t" + tfcondPrimeNumber);
 
+        /*
+         * Retrieval operations (get):
+         * 1. Calculate the shifted hash of the key exactly like in put().
+         * 2. Calculate the index: hash & (n-1).
+         * 3. Go to that index in the array.
+         * 4. Traverse the Linked List (or Red-Black Tree) located there.
+         * 5. Use the `==` and `.equals()` checks to find the exact matching key.
+         * 6. Return the value.
+         */
     }
 }
