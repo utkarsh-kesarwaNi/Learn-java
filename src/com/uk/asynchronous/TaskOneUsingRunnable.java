@@ -11,4 +11,9 @@ public class TaskOneUsingRunnable implements Runnable {
             System.out.println("std output inside Task One run method, execution done by Thread with name " + Thread.currentThread().getName());
         }
     }
+
+    /*
+    * One disadvantage is a Runnable, however, does not return a result and cannot throw a checked exception.
+    * To overcome this we have Callable interface.
+    * */
 }

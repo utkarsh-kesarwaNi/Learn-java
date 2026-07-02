@@ -2,7 +2,25 @@ package com.uk.asynchronous;
 
 public class ExecuteUsingRunnable {
 
-    static void main(String[] args) {
+    static void main() {
+        Thread threadOne = getThread();
+        threadOne.start();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("std output inside main method, execution done by Thread with name " + Thread.currentThread().getName());
+        }
+
+        /*
+         * Both main thread and threadOne will run in parallel or not will depend on the number of cores within your CPU
+         * If your CPU has only one core, operating system will switch context i.e.
+         * for some time main thread run, then threadOne run, then again main thread runs and so on....
+         *
+         * In this way we can achieve asynchronous behaviour where more than one task is being performed at the same time.
+         * We are not waiting for the main thread to complete its execution before threadOne can start its task.
+         */
+
+    }
+
+    private static Thread getThread() {
         TaskOneUsingRunnable taskOne = new TaskOneUsingRunnable();
 
         /*
@@ -18,10 +36,6 @@ public class ExecuteUsingRunnable {
          * TERMINATED : The execution flow within the run() block has completed or aborted via an exception
          */
 
-        Thread threadOne = new Thread(taskOne);
-        threadOne.start();
-        for (int i = 0; i < 10; i++) {
-            System.out.println("std output inside main method, execution done by Thread with name " + Thread.currentThread().getName());
-        }
+        return new Thread(taskOne);
     }
 }
