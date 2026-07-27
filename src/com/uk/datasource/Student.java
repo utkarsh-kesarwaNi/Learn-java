@@ -1,4 +1,4 @@
-package com.uk.stream.datasource;
+package com.uk.datasource;
 
 public class Student {
 

@@ -1,6 +1,6 @@
 package com.uk.stream.parallelstreams;
 
-import com.uk.stream.datasource.Student;
+import com.uk.datasource.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;

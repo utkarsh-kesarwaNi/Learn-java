@@ -34,6 +34,7 @@ public class BoxingUnboxing {
                 return value;
             }
         });
+
 //        IntStream intStream = integerStreamThree.mapToInt(value -> value);
 //        IntStream intStream = integerStreamThree.mapToInt(Integer::intValue);
         System.out.println(intStream.sum());
