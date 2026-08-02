@@ -1,4 +1,4 @@
-package com.uk.stream.stream;
+package com.uk.streamapi.stream;
 
 import com.uk.datasource.Student;
 

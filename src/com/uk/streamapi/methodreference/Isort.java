@@ -1,4 +1,4 @@
-package com.uk.stream.methodreference;
+package com.uk.streamapi.methodreference;
 
 import java.util.List;
 

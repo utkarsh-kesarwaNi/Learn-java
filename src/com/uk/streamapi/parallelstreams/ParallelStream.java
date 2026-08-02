@@ -1,4 +1,4 @@
-package com.uk.stream.parallelstreams;
+package com.uk.streamapi.parallelstreams;
 
 import com.uk.datasource.Student;
 

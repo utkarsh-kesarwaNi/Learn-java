@@ -1,6 +1,5 @@
-package com.uk.stream.intstream;
+package com.uk.streamapi.intstream;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.function.BinaryOperator;
 import java.util.function.ToIntFunction;

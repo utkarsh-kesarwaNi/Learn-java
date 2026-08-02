@@ -1,4 +1,4 @@
-package com.uk.stream.methodreference;
+package com.uk.streamapi.methodreference;
 
 @FunctionalInterface
 public interface Isum {

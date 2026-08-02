@@ -1,4 +1,4 @@
-package com.uk.stream.stream;
+package com.uk.streamapi.stream;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
