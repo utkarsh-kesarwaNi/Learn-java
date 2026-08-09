@@ -2,19 +2,43 @@ package com.uk.oop;
 
 import java.math.BigDecimal;
 
-/*
- * Object-Oriented Programming (OOP) ?
- * Object-Oriented Programming is a programming paradigm that organizes software design around objects rather than functions and logic.
- * It bundles state (attributes) and behaviour (methods) into cohesive units.
- */
 public class BankAccount {
 
     //    Class Variable (Static): Shared across all instances
     private static final String BANK_NAME = "Global Tech Bank";
 
     //    Instance Variables (State): Unique to each object
-    private String accountId;   // Mutable identity
-    private BigDecimal balance; // Mutable state
+    private final String accountId;   // Mutable identity
+    private BigDecimal balance;
+
+    public BankAccount(String accountId, BigDecimal balance) {
+        this.accountId = accountId;
+        this.balance = balance;
+    }
+
+    public void withdrawAmount(BigDecimal amount) {
+        this.balance = this.balance.subtract(amount);
+    }
+
+    public void depositAmount(BigDecimal amount) {
+        this.balance = this.balance.add(amount);
+    }
+
+    public String getAccountId() {
+        return accountId;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "accountId='" + accountId + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
 }
 
 /*
