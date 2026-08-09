@@ -1,15 +1,22 @@
 package com.uk.oop;
 
+import java.math.BigDecimal;
+
 public class Application {
     static void main(String[] args) {
 
 //      Object: Creating a concrete instance at runtime
 
 //        aliceAccount is REFERENCE pointing to a BankAccount object in memory
-        BankAccount aliceAccount = new BankAccount();
+        BankAccount aliceAccount = new BankAccount("019114ae-1080-711a-bc88-92716fed0123", BigDecimal.valueOf(5000.450));
 
 //        "bobAccount" points to a completely different memory location
-        BankAccount bobAccount = new BankAccount();
+        BankAccount bobAccount = new BankAccount("019114ad-8800-7fa3-b124-7389ab4123cd", BigDecimal.valueOf(5000.450));
+
+        System.out.println("Accounts before executing payment\n" + aliceAccount + "\n" + bobAccount);
+        Payment doPayment = new Payment(aliceAccount, bobAccount, BigDecimal.valueOf(449.657));
+        doPayment.transferAmount();
+        System.out.println("Accounts after executing payment\n" + aliceAccount + "\n" + bobAccount);
 
         /*
          * Where does the Object live?
