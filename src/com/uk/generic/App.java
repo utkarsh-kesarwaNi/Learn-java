@@ -8,6 +8,7 @@ public class App {
         Aquarium<Goldfish> goldfishAquarium = new Aquarium<>();
         goldfishAquarium.addFish(new Goldfish());
         Goldfish goldfish = goldfishAquarium.getFish();
+        swim(goldfish);
 
         /*
          * What happens here?
@@ -32,13 +33,47 @@ public class App {
         Aquarium<Arowana> arowanaAquarium = new Aquarium<>();
         arowanaAquarium.addFish(new Arowana());
         Arowana arowana = arowanaAquarium.getFish();
+//        Type witness
+        App.<Arowana>swim(arowana);
 
         Aquarium<Koi> koiAquarium = new Aquarium<>();
         koiAquarium.addFish(new Koi());
         Koi koi = koiAquarium.getFish();
+        swim(koi);
 
         Aquarium<Flowerhorn> flowerhornAquarium = new Aquarium<>();
         flowerhornAquarium.addFish(new Flowerhorn());
         Flowerhorn flowerhorn = flowerhornAquarium.getFish();
+        swim(flowerhorn);
+
+        bunch(new String[]{"Goldfish", "Koi", "Arowana"});
+        bunch(new Float[]{10.23f, 11.23412f});
+
+        String status = canShareAquarium(goldfish, arowana) ? "can" : "cannot";
+        System.out.printf("Goldfish and arowana %s share aquarium", status);
+    }
+
+    public static <T> void swim(T t) {
+        System.out.println(t.getClass().getName() + " is swimming");
+    }
+
+    /*
+     * Generic functions, helps us in avoiding multiple overloaded functions i.e. swim(Goldfish goldfish), swim(Koi koi),...
+     * SYNTAX RULE: The type parameter `<T>` MUST be placed BEFORE the return type.
+     *
+     * Just like generic classes, generic methods undergo type erasure, the compiler converts the function to:
+     * public static void swim(Object t) {
+     * System.out.println(t.getClass().getName() + " is swimming");
+     * }
+     */
+
+    public static <T> void bunch(T[] t) {
+        for(T current : t) {
+            System.out.println(current);
+        }
+    }
+
+    public static <T, U> boolean canShareAquarium(T fishOne, U fishTwo) {
+        return !fishOne.getClass().getName().contains("Shark") && !fishTwo.getClass().getName().contains("Shark");
     }
 }
