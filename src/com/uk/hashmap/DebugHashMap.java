@@ -8,9 +8,14 @@ public class DebugHashMap {
         Map<String, Integer> map = new HashMap<>();
         /*
          * What happens behind the scenes when map is declared and instantiated?
-         * It prepares an array of buckets (hash table) with a default initial capacity of 16.
+         * It prepares an array of buckets (hash table) with a default initial capacity of 16 (Lazy Initialization, the allocation of the 16-bucket array happens inside the very FIRST put() call).
          * The default load factor is 0.75, meaning when 75% of capacity is occupied, it resizes.
          * With 12 elements, capacity is 16; adding a 13th element doubles the capacity to 32.
+         *
+         * WHAT IF WE PASS A CUSTOM CAPACITY? e.g., new HashMap<>(20)
+         * HashMap capacity MUST be a power of 2.
+         * It uses a bit-shifting method called `tableSizeFor(int cap)` which finds the next power of 2 greater than or equal to the given number.
+         * For 20, the array size will actually be 32.
          *
          * During a resize, elements don't have their indices completely recalculated.
          * Because the size doubles (powers of 2), a mathematical trick ensures an element at
