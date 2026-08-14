@@ -49,8 +49,10 @@ public class App {
         bunch(new String[]{"Goldfish", "Koi", "Arowana"});
         bunch(new Float[]{10.23f, 11.23412f});
 
-        String status = canShareAquarium(goldfish, arowana) ? "can" : "cannot";
-        System.out.printf("Goldfish and arowana %s share aquarium", status);
+        String status = canShareAquarium(goldfish, koi) ? "can" : "cannot";
+        System.out.printf("Goldfish and koi %s share aquarium\n", status);
+
+        Aquarium.printClassName(goldfish);
     }
 
     public static <T> void swim(T t) {
