@@ -11,6 +11,11 @@ public class DebugHashMap {
          * It prepares an array of buckets (hash table) with a default initial capacity of 16 (Lazy Initialization, the allocation of the 16-bucket array happens inside the very FIRST put() call).
          * The default load factor is 0.75, meaning when 75% of capacity is occupied, it resizes.
          * With 12 elements, capacity is 16; adding a 13th element doubles the capacity to 32.
+         * Both get and put provide constant-time O(1) performance ideally.
+         * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+         * | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 |
+         * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+         * Each bucket initially points to a Node (Linked List).
          *
          * WHAT IF WE PASS A CUSTOM CAPACITY? e.g., new HashMap<>(20)
          * HashMap capacity MUST be a power of 2.
@@ -21,11 +26,6 @@ public class DebugHashMap {
          * Because the size doubles (powers of 2), a mathematical trick ensures an element at
          * index 'j' will either stay at index 'j' or move to 'j + oldCapacity' in the new array.
          *
-         * Both get and put provide constant-time O(1) performance ideally.
-         * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
-         * | 0  | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 | 12 | 13 | 14 | 15 |
-         * +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
-         * Each bucket initially points to a Node (Linked List).
          */
 
         map.put("First prime number", 2);

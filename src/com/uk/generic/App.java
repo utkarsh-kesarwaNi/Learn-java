@@ -4,7 +4,7 @@ public class App {
 
     static void main(String[] args) {
 
-//        INITIALIZATION & AUTOMATIC CASTING
+//      INITIALIZATION & AUTOMATIC CASTING
         Aquarium<Goldfish> goldfishAquarium = new Aquarium<>();
         goldfishAquarium.addFish(new Goldfish());
         Goldfish goldfish = goldfishAquarium.getFish();
