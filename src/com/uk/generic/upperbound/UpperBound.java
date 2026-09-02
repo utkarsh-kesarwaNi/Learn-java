@@ -1,6 +1,9 @@
 package com.uk.generic.upperbound;
 
-import java.math.BigInteger;
+import com.uk.datasource.Animal;
+import com.uk.datasource.Cat;
+import com.uk.datasource.Dog;
+import com.uk.datasource.GingerCat;
 
 public class UpperBound {
 

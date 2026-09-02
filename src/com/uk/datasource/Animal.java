@@ -1,4 +1,4 @@
-package com.uk.generic.upperbound;
+package com.uk.datasource;
 
 public class Animal extends Creature {
 

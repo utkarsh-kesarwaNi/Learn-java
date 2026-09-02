@@ -13,7 +13,7 @@ public class Sum {
 		int sumUsingMethodReference = iSumTwo.sum(13, 8);
 		System.out.println(sumUsingMethodReference);
 
-//		Integer class already has a static method sum(int, int)
+//		Integer class already has a static method add(int, int)
 		Isum iSumThree = Integer::sum;
 		int sumUsingMethodReferenceOfIntegerClass = iSumThree.sum(26, 16);
 		System.out.println(sumUsingMethodReferenceOfIntegerClass);

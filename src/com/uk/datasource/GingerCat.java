@@ -1,3 +1,3 @@
-package com.uk.generic.upperbound;
+package com.uk.datasource;
 
 public class GingerCat extends Cat { }

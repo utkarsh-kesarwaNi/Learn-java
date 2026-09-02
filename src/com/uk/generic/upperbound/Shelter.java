@@ -1,5 +1,7 @@
 package com.uk.generic.upperbound;
 
+import com.uk.datasource.Animal;
+
 public class Shelter<T extends Animal> {
     private final T petOne;
     private final T petTwo;
