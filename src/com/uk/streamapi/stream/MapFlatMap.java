@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 public class MapFlatMap {
 
-    static void main(String[] args) {
+    static void main() {
         List<Integer> numOne = List.of(0, 1, 1, 2, 3);
         List<Integer> numTwo = List.of(5, 8, 13, 21, 34);
         List<Integer> numThree = List.of(55);

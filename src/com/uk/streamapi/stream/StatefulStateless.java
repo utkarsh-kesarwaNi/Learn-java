@@ -4,7 +4,7 @@ import java.util.stream.Stream;
 
 public class StatefulStateless {
 
-	public static void main(String[] args) {
+	static void main() {
 
 //		sorted() is a stateful intermediate operation which returns a stream sorted according to natural order
 		Stream.of(10, 21, 1, 3, 22, 99, 43, 23).sorted().forEach(number -> System.out.println(number));

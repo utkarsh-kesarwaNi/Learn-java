@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StreamOnCollection {
 
-    public static void main(String[] args) {
+    static void main() {
         Student damonSalvatore = new Student(101, "Damon Salvatore", 28);
         Student elenaGilbert = new Student(101, "Elena Gilbert", 27);
         Student niklaus = new Student(101, "Klaus Mikaelson", 33);

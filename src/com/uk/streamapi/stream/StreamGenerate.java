@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 public class StreamGenerate {
 
-	public static void main(String[] args) {
+	static void main() {
 
 //		@FunctionalInterface 
 //		public interface Supplier<T> { T get(); } is a functional interface with one abstract method which is get() which returns the T type of results
