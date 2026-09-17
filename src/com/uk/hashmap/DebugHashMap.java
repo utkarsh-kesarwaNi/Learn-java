@@ -8,7 +8,7 @@ public class DebugHashMap {
         Map<String, Integer> map = new HashMap<>();
         /*
          * What happens behind the scenes when map is declared and instantiated?
-         * It prepares an array of buckets (hash table) with a default initial capacity of 16 (Lazy Initialization, the allocation of the 16-bucket array happens inside the very FIRST put() call).
+         * It prepares an array of buckets (hash table) with a default initial capacity of 16 (Lazy Initialization, the allocation of the 16-bucket array happens the very FIRST put() call).
          * The default load factor is 0.75, meaning when 75% of capacity is occupied, it resizes.
          * With 12 elements, capacity is 16; adding a 13th element doubles the capacity to 32.
          * Both get and put provide constant-time O(1) performance ideally.

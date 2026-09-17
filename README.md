@@ -11,6 +11,9 @@ A comprehensive java learning repository covering core concepts, advanced topics
 - **[Map and FlatMap](src/com/uk/streamapi/stream/MapFlatMap.java)**
 - **[Questions](src/com/uk/streamapi/questions/Solve.java)**
 
+### **[Generics](src/com/uk/generic/Aquarium.java)**
+- **[What are Generics in java ?](src/com/uk/generic/Aquarium.java)**
+
 ---
 
 ## Contributing
