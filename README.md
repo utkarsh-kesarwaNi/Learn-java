@@ -1,6 +1,4 @@
-# Learn Java 📚
-
-A comprehensive java learning repository covering core concepts, advanced topics, and practical implementations.
+A comprehensive learning repository covering core concepts, advanced topics, and practical implementations.
 
 ## 📖 Table of Contents
 ### **[How HashMap works internally ?](src/com/uk/hashmap/DebugHashMap.java)**
@@ -14,6 +12,13 @@ A comprehensive java learning repository covering core concepts, advanced topics
 ### **[Generics](src/com/uk/generic/Aquarium.java)**
 - **[What are Generics in java ?](src/com/uk/generic/Aquarium.java)**
 
+### **[Low level design]()**
+- **[What is Low level design ?](src/com/uk/lld/LowLevelDesign.java)**
+- **[What is single responsibility principle ?](src/com/uk/lld/solid/Employee.java)**
+- **[What is Open/Closed Principle ?](src/com/uk/lld/solid/CheckoutService.java)**
+- **[Liskov Substitution Principle](src/com/uk/lld/solid/BankAccount.java)**
+- **[Interface Segregation Principle](src/com/uk/lld/solid/MultiFunctionDevice.java)**
+- **[Dependency Inversion Principle](src/com/uk/lld/solid/OrderService.java)**
 ---
 
 ## Contributing
