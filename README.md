@@ -19,6 +19,8 @@ A comprehensive learning repository covering core concepts, advanced topics, and
 - **[Liskov Substitution Principle](src/com/uk/lld/solid/BankAccount.java)**
 - **[Interface Segregation Principle](src/com/uk/lld/solid/MultiFunctionDevice.java)**
 - **[Dependency Inversion Principle](src/com/uk/lld/solid/OrderService.java)**
+- ### **[Design Patterns](src/com/uk/lld/designpatterns/DesignPatterns.java)**
+- **[Strategy design pattern](src/com/uk/lld/designpatterns/PaymentStrategy.java)**
 ---
 
 ## Contributing
