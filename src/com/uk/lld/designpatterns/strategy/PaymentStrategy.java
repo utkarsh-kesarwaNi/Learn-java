@@ -1,4 +1,4 @@
-package com.uk.lld.designpatterns;
+package com.uk.lld.designpatterns.strategy;
 
 public interface PaymentStrategy {
     void pay(int amount);
