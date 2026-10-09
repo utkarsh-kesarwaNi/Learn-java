@@ -1,4 +1,4 @@
-package com.uk.hashmap;
+package com.uk.map;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,8 +7,8 @@ public class DebugHashMap {
     static void main(String[] args) {
         Map<String, Integer> map = new HashMap<>();
         /*
-         * What happens behind the scenes when map is declared and instantiated?
-         * It prepares an array of buckets (hash table) with a default initial capacity of 16 (Lazy Initialization, the allocation of the 16-bucket array happens the very FIRST put() call).
+         * What happens behind the scenes when hashmap is declared and instantiated?
+         * It prepares an array of buckets (hash table) with a default initial capacity of 16 (lazy Initialization, the allocation of the 16-bucket array happens the very FIRST put() call).
          * The default load factor is 0.75, meaning when 75% of capacity is occupied, it resizes.
          * With 12 elements, capacity is 16; adding a 13th element doubles the capacity to 32.
          * Both get and put provide constant-time O(1) performance ideally.

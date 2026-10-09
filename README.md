@@ -1,9 +1,10 @@
 A comprehensive learning repository covering core concepts, advanced topics, and practical implementations.
 
 ## 📖 Table of Contents
-### **[How HashMap works internally ?](src/com/uk/hashmap/DebugHashMap.java)**
+### **[How HashMap works internally ?](src/com/uk/map/DebugHashMap.java)**
+### **[How ConcurrentHashMap works internally ?](src/com/uk/map/DebugConcurrentHashMap.java)**
 
-### **[Stream API](src/com/uk/hashmap/DebugHashMap.java)**
+### **[Stream API](src/com/uk/map/DebugHashMap.java)**
 - **[Supplier, Consumer ](src/com/uk/streamapi/stream/StreamGenerate.java)**
 - **[Stateful and Stateless operations](src/com/uk/streamapi/stream/StatefulStateless.java)**
 - **[Map and FlatMap](src/com/uk/streamapi/stream/MapFlatMap.java)**
