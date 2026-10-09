@@ -9,6 +9,7 @@ A comprehensive learning repository covering core concepts, advanced topics, and
 - **[Stateful and Stateless operations](src/com/uk/streamapi/stream/StatefulStateless.java)**
 - **[Map and FlatMap](src/com/uk/streamapi/stream/MapFlatMap.java)**
 - **[Questions](src/com/uk/streamapi/questions/Solve.java)**
+- **[Group anagrams with and without stream](src/com/uk/streamapi/questions/GroupAnagrams.java)**
 
 ### **[Generics](src/com/uk/generic/Aquarium.java)**
 - **[What are Generics in java ?](src/com/uk/generic/Aquarium.java)**
