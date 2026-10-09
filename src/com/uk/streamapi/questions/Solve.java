@@ -3,6 +3,7 @@ package com.uk.streamapi.questions;
 import com.uk.datasource.Employee;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Solve {
@@ -63,6 +64,8 @@ public class Solve {
         System.out.println(getCommonElements(firstListOfIntegers, secondListOfIntegers));
 
         System.out.println(flattenAndGetUnique(nestedListOfIntegers));
+
+        System.out.println(getFirstRepeatingCharacter(listOfStrings.get(3)));
     }
 
     /*
@@ -219,4 +222,22 @@ public class Solve {
                 .distinct().toList();
     }
 
+    /*
+     * Get first repeating character in a string
+     */
+    private static Character getFirstRepeatingCharacter(String s) {
+        return s.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.groupingBy(
+                        Function.identity(),
+                        LinkedHashMap::new,
+                        Collectors.counting()
+                ))
+                .entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No repeating character found"));
+    }
 }
